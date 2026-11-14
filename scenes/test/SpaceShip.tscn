@@ -3,6 +3,11 @@
 [ext_resource type="TileSet" uid="uid://bbp7royf374pn" path="res://tilesets/objects.tres" id="1_7uawy"]
 [ext_resource type="TileSet" uid="uid://dha1pa2tfwvqk" path="res://tilesets/spaceShip.tres" id="1_kxdo0"]
 [ext_resource type="PackedScene" uid="uid://dnqd41ml7fddb" path="res://characters/player/player.tscn" id="2_7uawy"]
+[ext_resource type="Script" uid="uid://bky1ksntvopip" path="res://scenes/test/event_0.gd" id="4_lxbn1"]
+[ext_resource type="PackedScene" uid="uid://ccww5sut3krbi" path="res://scenes/minigames/minigame0.tscn" id="5_minigame"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(11.891483, 23.033072)
 
 [node name="testSceneTileMap" type="Node2D" unique_id=1483749293]
 
@@ -26,3 +31,11 @@ tile_set = ExtResource("1_7uawy")
 
 [node name="Player" parent="." unique_id=81086923 instance=ExtResource("2_7uawy")]
 position = Vector2(97, 55)
+
+[node name="Computer" type="Area2D" parent="." unique_id=1636774014]
+script = ExtResource("4_lxbn1")
+minigame_scene = ExtResource("5_minigame")
+
+[node name="event0" type="CollisionShape2D" parent="Computer" unique_id=1022034562]
+position = Vector2(136.14207, 77.49212)
+shape = SubResource("RectangleShape2D_g4v7s")
