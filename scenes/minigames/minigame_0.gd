@@ -1,12 +1,16 @@
 extends CanvasLayer
 signal completed
 
+const GUIDE_PORTRAIT := preload("res://assets/splashart/jinSplashArt.png")
+const CHAT_PANEL_SCENE := preload("res://scenes/chatDialogue/chatPanel.tscn")
+
 @onready var loading_bar: AnimatedSprite2D = $Content/LoadingScreen/LoadingBar
 @onready var loading_screen: Control = $Content/LoadingScreen
 @onready var stage_1: Control = $Content/Stage1
 @onready var stage_2: Control = $Content/Stage2
 @onready var stage_3: Control = $Content/Stage3
 @onready var stage_4: Control = $Content/Summary
+@onready var bottom_1: Control = $Content/BottomContainer
 @onready var material_label: Label = $Content/BottomContainer/MaterialLabel
 @onready var weight_label: Label = $Content/BottomContainer/WeightLabel
 @onready var button_1: TextureButton = $Content/Stage1/Container/Button1
@@ -19,6 +23,13 @@ signal completed
 @onready var fuel_button_2: TextureButton = $Content/Stage3/Container/Button2
 @onready var fuel_button_3: TextureButton = $Content/Stage3/Container/Button3
 @onready var next_button: TextureButton = $Content/BottomContainer/NextButton
+@onready var summary_material_label: Label = $Content/Summary/SummaryLayout/MaterialLabel
+@onready var summary_oxygen_label: Label = $Content/Summary/SummaryLayout/OxygenLabel
+@onready var summary_fuel_label: Label = $Content/Summary/SummaryLayout/FuelLabel
+@onready var retry_button: Button = $Content/Summary/SummaryLayout/ActionButtons/RetryButton
+@onready var confirm_button: Button = $Content/Summary/SummaryLayout/ActionButtons/ConfirmButton
+
+
 
 var selected_material: String = ""
 var selected_weight: float = 0.0
@@ -28,6 +39,8 @@ var selected_oxygen: int = 0
 var stored_oxygen: int = 0
 var selected_fuel: int = 0
 var stored_fuel: int = 0
+
+var chat_panel: Control
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -39,6 +52,13 @@ func _ready() -> void:
 	material_label.hide()
 	weight_label.hide()
 	next_button.hide()
+
+	chat_panel = _get_chat_panel()
+	if chat_panel == null:
+		return
+	if not chat_panel.is_node_ready():
+		await chat_panel.ready
+
 	loading_bar.animation_finished.connect(_on_loading_finished)
 	button_1.pressed.connect(_on_button_1_pressed)
 	button_2.pressed.connect(_on_button_2_pressed)
@@ -50,7 +70,33 @@ func _ready() -> void:
 	fuel_button_2.pressed.connect(_on_fuel_button_2_pressed)
 	fuel_button_3.pressed.connect(_on_fuel_button_3_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)
+	retry_button.pressed.connect(_on_retry_button_pressed)
+	confirm_button.pressed.connect(_on_confirm_button_pressed)
 	loading_bar.play("loading")
+
+func _get_chat_panel() -> Control:
+	var shared_panel := get_tree().root.find_child("ChatPanel", true, false) as Control
+	if shared_panel != null and _has_chat_content(shared_panel):
+		return shared_panel
+
+	var fallback_layer := CanvasLayer.new()
+	fallback_layer.layer = 100
+	get_tree().root.add_child(fallback_layer)
+
+	var fallback_panel := CHAT_PANEL_SCENE.instantiate() as Control
+	if fallback_panel == null:
+		push_error("Chat panel scene does not contain a Control root.")
+		fallback_layer.queue_free()
+		return null
+
+	fallback_layer.add_child(fallback_panel)
+	return fallback_panel
+
+func _has_chat_content(panel: Control) -> bool:
+	return (
+		panel.get_node_or_null("MarginContainer/HBoxContainer/Name") != null
+		and panel.get_node_or_null("MarginContainer/HBoxContainer/Content/Text") != null
+	)
 
 func _on_loading_finished() -> void:
 	if loading_bar.animation == "loading":
@@ -60,6 +106,10 @@ func _on_loading_finished() -> void:
 		material_label.show()
 		weight_label.show()
 		next_button.show()
+		await show_line(
+			"Jin",
+			"First, choose the material for the shuttle. Consider its weight and strength.",
+		)
 
 func _on_button_1_pressed() -> void:
 	_select_material("Steel", 10.0)
@@ -112,16 +162,66 @@ func _on_next_button_pressed() -> void:
 		stored_weight = selected_weight
 		stage_1.hide()
 		stage_2.show()
+		await show_line(
+			"Jin",
+			"Now choose the oxygen capacity. A larger tank supports more oxygen, but takes more space.",
+		)
 	elif stage_2.visible:
 		if selected_oxygen == 0:
 			return
 		stored_oxygen = selected_oxygen
 		stage_2.hide()
 		stage_3.show()
+		await show_line(
+			"Jin",
+			"Finally, choose the fuel capacity. More fuel gives the shuttle more range.",
+		)
 	elif stage_3.visible:
 		if selected_fuel == 0:
 			return
 		stored_fuel = selected_fuel
+		summary_material_label.text = "Material: " + stored_material
+		summary_oxygen_label.text = "Oxygen: " + str(stored_oxygen) + " L"
+		summary_fuel_label.text = "Fuel: " + str(stored_fuel) + " L"
 		stage_3.hide()
+		stage_3.visible = false
 		stage_4.show()
+		stage_4.visible = true
+		bottom_1.visible = false
 		next_button.hide()
+
+func _on_retry_button_pressed() -> void:
+	selected_material = ""
+	selected_weight = 0.0
+	stored_material = ""
+	stored_weight = 0.0
+	selected_oxygen = 0
+	stored_oxygen = 0
+	selected_fuel = 0
+	stored_fuel = 0
+
+	for button in [
+		button_1, button_2, button_3,
+		oxygen_button_1, oxygen_button_2, oxygen_button_3,
+		fuel_button_1, fuel_button_2, fuel_button_3
+	]:
+		button.set_pressed(false)
+
+	summary_material_label.text = "Material: ---"
+	summary_oxygen_label.text = "Oxygen: ---"
+	summary_fuel_label.text = "Fuel: ---"
+	material_label.text = "Material: ---"
+	weight_label.text = "Weight: ---"
+	stage_4.hide()
+	stage_2.hide()
+	stage_3.hide()
+	stage_1.show()
+	bottom_1.show()
+	next_button.show()
+
+func _on_confirm_button_pressed() -> void:
+	completed.emit()
+
+func show_line(speaker_name: String, dialogue_text: String) -> void:
+	chat_panel.show_dialogue(speaker_name, dialogue_text, GUIDE_PORTRAIT)
+	await chat_panel.dialogue_finished

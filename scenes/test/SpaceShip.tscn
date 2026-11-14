@@ -52,6 +52,7 @@ position = Vector2(136.14207, 77.49212)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1338792524]
+layer = 100
 
 [node name="ChatPanel" parent="CanvasLayer" unique_id=1091042661 instance=ExtResource("7_wuwra")]
 visible = false

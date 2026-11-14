@@ -11,6 +11,7 @@ signal dialogue_finished
 var _is_showing := false
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 
 func show_dialogue(
