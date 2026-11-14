@@ -23,13 +23,4 @@ position = Vector2(40, 0)
 position = Vector2(40, 20)
 
 [node name="Rocket2" parent="." unique_id=497174051 instance=ExtResource("1_qpo1b")]
-position = Vector2(-20, 21)
-
-[node name="asteroid5" parent="." unique_id=621497811 instance=ExtResource("2_qnmsb")]
-position = Vector2(-28, 21)
-
-[node name="asteroid6" parent="." unique_id=1266692302 instance=ExtResource("2_qnmsb")]
-position = Vector2(-21, 29)
-
-[node name="asteroid7" parent="." unique_id=422079494 instance=ExtResource("2_qnmsb")]
-position = Vector2(-12, 22)
+position = Vector2(0, 20)
