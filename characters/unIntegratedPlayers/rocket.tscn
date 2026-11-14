@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://pvv4re1ssxr1"]
+
+[ext_resource type="Script" uid="uid://cg1opdst2o22l" path="res://characters/unIntegratedPlayers/rocket.gd" id="1_877hr"]
+[ext_resource type="Texture2D" uid="uid://by6l4waf4axt" path="res://assets/unIntegratedAssets/PlayerTestSprite.png" id="1_atdsd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 7.0
+
+[node name="Rocket" type="CharacterBody2D" unique_id=786328473]
+script = ExtResource("1_877hr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1391963402]
+texture = ExtResource("1_atdsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1219732376]
+shape = SubResource("CircleShape2D_g4v7s")

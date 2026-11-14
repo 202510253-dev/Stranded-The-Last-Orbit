@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://6nk6ncr3b6vt"]
+
+[ext_resource type="PackedScene" uid="uid://pvv4re1ssxr1" path="res://characters/unIntegratedPlayers/rocket.tscn" id="1_qpo1b"]
+[ext_resource type="PackedScene" uid="uid://csnmfpwf10j0t" path="res://scenes/unIntegratedScenes/asteroid.tscn" id="2_qnmsb"]
+
+[node name="MinigameAsteroid" type="Node2D" unique_id=2141271658]
+
+[node name="Rocket" parent="." unique_id=786328473 instance=ExtResource("1_qpo1b")]
+
+[node name="Camera2D" type="Camera2D" parent="Rocket" unique_id=1642030950]
+position = Vector2(20, 0)
+
+[node name="asteroid" parent="." unique_id=2046697063 instance=ExtResource("2_qnmsb")]
+position = Vector2(20, 0)
+
+[node name="asteroid2" parent="." unique_id=1909449911 instance=ExtResource("2_qnmsb")]
+position = Vector2(20, 20)
+
+[node name="asteroid3" parent="." unique_id=1658216954 instance=ExtResource("2_qnmsb")]
+position = Vector2(40, 0)
+
+[node name="asteroid4" parent="." unique_id=740629736 instance=ExtResource("2_qnmsb")]
+position = Vector2(40, 20)
+
+[node name="Rocket2" parent="." unique_id=497174051 instance=ExtResource("1_qpo1b")]
+position = Vector2(-20, 21)
+
+[node name="asteroid5" parent="." unique_id=621497811 instance=ExtResource("2_qnmsb")]
+position = Vector2(-28, 21)
+
+[node name="asteroid6" parent="." unique_id=1266692302 instance=ExtResource("2_qnmsb")]
+position = Vector2(-21, 29)
+
+[node name="asteroid7" parent="." unique_id=422079494 instance=ExtResource("2_qnmsb")]
+position = Vector2(-12, 22)
