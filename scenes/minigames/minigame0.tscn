@@ -512,15 +512,6 @@ texture_pressed = ExtResource("5_3uw4b")
 texture_disabled = ExtResource("4_hghke")
 stretch_mode = 5
 
-[node name="Stage4" type="Control" parent="Content" unique_id=1893503228]
-visible = false
-anchors_preset = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 384.0
-offset_bottom = 176.0
-metadata/_edit_lock_ = true
-
 [node name="BottomContainer" type="Control" parent="Content" unique_id=1709454216]
 anchors_preset = 0
 offset_left = 72.0
@@ -560,3 +551,12 @@ grow_horizontal = 0
 grow_vertical = 2
 texture_normal = ExtResource("6_3uw4b")
 stretch_mode = 0
+
+[node name="Summary" type="Control" parent="Content" unique_id=1893503228]
+visible = false
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 176.0
+metadata/_edit_lock_ = true
