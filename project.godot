@@ -29,7 +29,8 @@ window/stretch/scale_mode="integer"
 
 folder_colors={
 "res://assets/unIntegratedAssets/": "yellow",
-"res://characters/unIntegratedPlayers/": "yellow"
+"res://characters/unIntegratedPlayers/": "yellow",
+"res://scenes/unIntegratedScenes/": "yellow"
 }
 
 [input]
