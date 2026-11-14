@@ -35,6 +35,20 @@ func hide_dialogue() -> void:
 	visible = false
 	dialogue_finished.emit()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if _is_showing and close_on_advance and event.is_action_pressed("interact"):
+func _input(event: InputEvent) -> void:
+	if not _is_showing or not close_on_advance:
+		return
+
+	var should_advance := event.is_action_pressed("interact")
+
+	if event is InputEventMouseButton:
+		should_advance = (
+			event.button_index == MOUSE_BUTTON_LEFT
+			and event.pressed
+		)
+	elif event is InputEventScreenTouch:
+		should_advance = event.pressed
+
+	if should_advance:
+		get_viewport().set_input_as_handled()
 		hide_dialogue()

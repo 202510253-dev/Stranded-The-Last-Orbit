@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://tg46rww2id4i" path="res://assets/splashart/PlaceHolder.png" id="1_fr44u"]
 [ext_resource type="Texture2D" uid="uid://cu5nnpfkxpor5" path="res://assets/dialogue/dialoguePanel.png" id="2_1h37b"]
-[ext_resource type="Script" uid="uid://nrx1mel83oi8" path="res://scenes/minigames/chat_panel.gd" id="3_chat_panel"]
+[ext_resource type="Script" uid="uid://nrx1mel83oi8" path="res://scenes/chatDialogue/chat_panel.gd" id="3_chat_panel"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ytnni"]
 texture = ExtResource("2_1h37b")
