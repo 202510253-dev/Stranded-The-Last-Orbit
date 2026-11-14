@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dy78opand6au6"]
+
+[ext_resource type="Script" uid="uid://mi2418mxk8xq" path="res://scenes/xnTest/game.gd" id="1_lw485"]
+[ext_resource type="PackedScene" uid="uid://datqk2gk0wb72" path="res://scenes/xnTest/meteor.tscn" id="2_ar1aq"]
+
+[sub_resource type="Curve2D" id="Curve2D_lw485"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -5, -8, 0, 0, 0, 0, 11, -8, 0, 0, 0, 0, 11, 8, 0, 0, 0, 0, -5, 8, 0, 0, 0, 0, -5, -8)
+}
+point_count = 5
+
+[node name="Game" type="Node2D" unique_id=1517262233]
+script = ExtResource("1_lw485")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=230077400]
+position = Vector2(-3, 0)
+curve = SubResource("Curve2D_lw485")
+
+[node name="meteorSpawnRate" type="Timer" parent="." unique_id=608007849]
+wait_time = 0.5
+
+[node name="Timer" type="Timer" parent="meteorSpawnRate" unique_id=1876632372]
+
+[node name="Meteor" parent="." unique_id=2106907921 instance=ExtResource("2_ar1aq")]
+
+[node name="Camera2D" type="Camera2D" parent="Meteor" unique_id=1718397188]
+zoom = Vector2(3.59, 3.59)

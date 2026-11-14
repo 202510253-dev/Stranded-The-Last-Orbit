@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://datqk2gk0wb72"]
+
+[ext_resource type="Texture2D" uid="uid://18uphyru70nt" path="res://assets/game/sprites/meteor.png" id="1_cgiog"]
+[ext_resource type="Script" uid="uid://bghjq5qdycn5b" path="res://scenes/xnTest/meteor.gd" id="1_h3l2b"]
+[ext_resource type="Script" uid="uid://d37yfweslifah" path="res://scenes/xnTest/clickCheck.gd" id="3_pgjlj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(10, 10)
+
+[node name="Meteor" type="RigidBody2D" unique_id=2106907921]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_h3l2b")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1629392482]
+texture = ExtResource("1_cgiog")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1659392578]
+script = ExtResource("3_pgjlj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1034197546]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=561443743]
+rect = Rect2(-7, -7, 14, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079758094]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="destroyMeteor" from="Sprite2D/Area2D" to="." method="_on_area_2d_destroy_meteor"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
