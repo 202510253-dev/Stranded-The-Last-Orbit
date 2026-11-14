@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://8c0cwtlxrlx2" path="res://scenes/minigames/minigame_0.gd" id="1_351ja"]
 [ext_resource type="Texture2D" uid="uid://yb6tgxpop31b" path="res://assets/minigame/scene0/minigame0.png" id="1_j2758"]
 [ext_resource type="Texture2D" uid="uid://s4du6dpxmbmc" path="res://assets/minigame/scene0/Loading.png" id="3_4u5ea"]
+[ext_resource type="Texture2D" uid="uid://0kvtq2t3girw" path="res://assets/minigame/scene0/SteelOff.png" id="4_hghke"]
+[ext_resource type="Texture2D" uid="uid://d0pkduav6dtah" path="res://assets/minigame/scene0/SteelOn.png" id="5_3uw4b"]
+[ext_resource type="Texture2D" uid="uid://dk11ws8lpanjp" path="res://icon.svg" id="6_3uw4b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_351ja"]
 texture = ExtResource("1_j2758")
@@ -249,10 +252,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v48el")
 }],
-"loop": 1,
-"name": &"Loading",
+"loop": 0,
+"name": &"loading",
 "speed": 17.0
 }]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_materials"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_oxygen"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fuel"]
 
 [node name="MiniGame0" type="CanvasLayer" unique_id=1648711348]
 script = ExtResource("1_351ja")
@@ -265,59 +274,289 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.0627451, 0.007843138, 0.5058824)
 
-[node name="TabletPanel" type="TileMapLayer" parent="." unique_id=997312151]
-tile_map_data = PackedByteArray("AAAIAAIAAAACAAEAAAAJAAIAAAADAAEAAAAKAAIAAAADAAEAAAALAAIAAAADAAEAAAAMAAIAAAADAAEAAAANAAIAAAADAAEAAAAOAAIAAAADAAEAAAAPAAIAAAADAAEAAAAQAAIAAAADAAEAAAARAAIAAAADAAEAAAASAAIAAAADAAEAAAATAAIAAAAEAAEAAAAIAAMAAAACAAIAAAAIAAQAAAACAAMAAAAIAAUAAAACAAIAAAAIAAYAAAACAAMAAAAIAAcAAAACAAIAAAAIAAgAAAACAAMAAAAIAAkAAAACAAIAAAAIAAoAAAACAAQAAAATAAoAAAAEAAQAAAATAAMAAAAEAAIAAAATAAQAAAAEAAMAAAATAAUAAAAEAAIAAAATAAYAAAAEAAMAAAATAAcAAAAEAAIAAAATAAgAAAAEAAMAAAATAAkAAAAEAAIAAAAJAAoAAAADAAEAADAKAAoAAAADAAEAADALAAoAAAADAAEAADAMAAoAAAADAAEAADANAAoAAAADAAQAAAAOAAoAAAADAAQAAAAPAAoAAAADAAEAADAQAAoAAAADAAEAADARAAoAAAADAAEAADASAAoAAAADAAEAADAJAAMAAAADAAIAAAAJAAQAAAADAAIAAAAJAAUAAAADAAIAAAAJAAYAAAADAAIAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAIAAAAKAAMAAAADAAIAAAAKAAQAAAADAAIAAAAKAAUAAAADAAIAAAAKAAYAAAADAAIAAAAKAAcAAAADAAIAAAAKAAgAAAADAAIAAAAKAAkAAAADAAIAAAALAAMAAAADAAIAAAALAAQAAAADAAIAAAALAAUAAAADAAIAAAALAAYAAAADAAIAAAALAAcAAAADAAIAAAALAAgAAAADAAIAAAALAAkAAAADAAIAAAAMAAMAAAADAAIAAAAMAAQAAAADAAIAAAAMAAUAAAADAAIAAAAMAAYAAAADAAIAAAAMAAcAAAADAAIAAAAMAAgAAAADAAIAAAAMAAkAAAADAAIAAAANAAMAAAADAAIAAAANAAQAAAADAAIAAAANAAUAAAADAAIAAAANAAYAAAADAAIAAAANAAcAAAADAAIAAAANAAgAAAADAAIAAAANAAkAAAADAAIAAAAOAAMAAAADAAIAAAAOAAQAAAADAAIAAAAOAAUAAAADAAIAAAAOAAYAAAADAAIAAAAOAAcAAAADAAIAAAAOAAgAAAADAAIAAAAOAAkAAAADAAIAAAAPAAMAAAADAAIAAAAPAAQAAAADAAIAAAAPAAUAAAADAAIAAAAPAAYAAAADAAIAAAAPAAcAAAADAAIAAAAPAAgAAAADAAIAAAAPAAkAAAADAAIAAAAQAAMAAAADAAIAAAAQAAQAAAADAAIAAAAQAAUAAAADAAIAAAAQAAYAAAADAAIAAAAQAAcAAAADAAIAAAAQAAgAAAADAAIAAAAQAAkAAAADAAIAAAARAAMAAAADAAIAAAARAAQAAAADAAIAAAARAAUAAAADAAIAAAARAAYAAAADAAIAAAARAAcAAAADAAIAAAARAAgAAAADAAIAAAARAAkAAAADAAIAAAASAAMAAAADAAIAAAASAAQAAAADAAIAAAASAAUAAAADAAIAAAASAAYAAAADAAIAAAASAAcAAAADAAIAAAASAAgAAAADAAIAAAASAAkAAAADAAIAAAA=")
+[node name="TabletPanel" type="TileMapLayer" parent="ColorRect" unique_id=997312151]
+tile_map_data = PackedByteArray("AAAIAAIAAAADAAEAAAAJAAIAAAADAAEAAAAKAAIAAAADAAEAAAALAAIAAAADAAEAAAAMAAIAAAADAAEAAAANAAIAAAADAAEAAAAOAAIAAAADAAEAAAAPAAIAAAADAAEAAAAQAAIAAAADAAEAAAARAAIAAAADAAEAAAASAAIAAAADAAEAAAATAAIAAAADAAEAAAAIAAMAAAADAAIAAAAIAAQAAAADAAIAAAAIAAUAAAADAAIAAAAIAAYAAAADAAIAAAAIAAcAAAADAAIAAAAIAAgAAAADAAIAAAAIAAkAAAADAAIAAAAIAAoAAAADAAEAADATAAoAAAADAAEAADATAAMAAAADAAIAAAATAAQAAAADAAIAAAATAAUAAAADAAIAAAATAAYAAAADAAIAAAATAAcAAAADAAIAAAATAAgAAAADAAIAAAATAAkAAAADAAIAAAAJAAoAAAADAAEAADAKAAoAAAADAAEAADALAAoAAAADAAEAADAMAAoAAAADAAEAADANAAoAAAADAAEAADAOAAoAAAADAAEAADAPAAoAAAADAAEAADAQAAoAAAADAAEAADARAAoAAAADAAEAADASAAoAAAADAAEAADAJAAMAAAADAAIAAAAJAAQAAAADAAIAAAAJAAUAAAADAAIAAAAJAAYAAAADAAIAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAIAAAAKAAMAAAADAAIAAAAKAAQAAAADAAIAAAAKAAUAAAADAAIAAAAKAAYAAAADAAIAAAAKAAcAAAADAAIAAAAKAAgAAAADAAIAAAAKAAkAAAADAAIAAAALAAMAAAADAAIAAAALAAQAAAADAAIAAAALAAUAAAADAAIAAAALAAYAAAADAAIAAAALAAcAAAADAAIAAAALAAgAAAADAAIAAAALAAkAAAADAAIAAAAMAAMAAAADAAIAAAAMAAQAAAADAAIAAAAMAAUAAAADAAIAAAAMAAYAAAADAAIAAAAMAAcAAAADAAIAAAAMAAgAAAADAAIAAAAMAAkAAAADAAIAAAANAAMAAAADAAIAAAANAAQAAAADAAIAAAANAAUAAAADAAIAAAANAAYAAAADAAIAAAANAAcAAAADAAIAAAANAAgAAAADAAIAAAANAAkAAAADAAIAAAAOAAMAAAADAAIAAAAOAAQAAAADAAIAAAAOAAUAAAADAAIAAAAOAAYAAAADAAIAAAAOAAcAAAADAAIAAAAOAAgAAAADAAIAAAAOAAkAAAADAAIAAAAPAAMAAAADAAIAAAAPAAQAAAADAAIAAAAPAAUAAAADAAIAAAAPAAYAAAADAAIAAAAPAAcAAAADAAIAAAAPAAgAAAADAAIAAAAPAAkAAAADAAIAAAAQAAMAAAADAAIAAAAQAAQAAAADAAIAAAAQAAUAAAADAAIAAAAQAAYAAAADAAIAAAAQAAcAAAADAAIAAAAQAAgAAAADAAIAAAAQAAkAAAADAAIAAAARAAMAAAADAAIAAAARAAQAAAADAAIAAAARAAUAAAADAAIAAAARAAYAAAADAAIAAAARAAcAAAADAAIAAAARAAgAAAADAAIAAAARAAkAAAADAAIAAAASAAMAAAADAAIAAAASAAQAAAADAAIAAAASAAUAAAADAAIAAAASAAYAAAADAAIAAAASAAcAAAADAAIAAAASAAgAAAADAAIAAAASAAkAAAADAAIAAAADAAIAAAADAAEAAAAXAAIAAAAEAAEAAAAUAAIAAAADAAEAAAAVAAIAAAADAAEAAAAWAAIAAAADAAEAAAAEAAIAAAADAAEAAAAFAAIAAAADAAEAAAAGAAIAAAADAAEAAAAHAAIAAAADAAEAAAADAAMAAAADAAIAAAADAAQAAAADAAIAAAADAAUAAAADAAIAAAADAAYAAAADAAIAAAADAAcAAAADAAIAAAADAAgAAAADAAIAAAADAAkAAAADAAIAAAADAAoAAAADAAEAADAXAAoAAAAEAAQAAAAXAAMAAAAEAAMAAAAXAAQAAAAEAAMAAAAXAAUAAAAEAAMAAAAXAAYAAAAEAAMAAAAXAAcAAAAEAAMAAAAXAAgAAAAEAAMAAAAXAAkAAAAEAAMAAAAEAAoAAAADAAEAADAFAAoAAAADAAEAADAGAAoAAAADAAEAADAHAAoAAAADAAEAADAUAAoAAAADAAEAADAVAAoAAAADAAEAADAWAAoAAAADAAEAADAEAAMAAAADAAIAAAAEAAQAAAADAAIAAAAEAAUAAAADAAIAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAADAAIAAAAEAAkAAAADAAIAAAAFAAMAAAADAAIAAAAFAAQAAAADAAIAAAAFAAUAAAADAAIAAAAFAAYAAAADAAIAAAAFAAcAAAADAAIAAAAFAAgAAAADAAIAAAAFAAkAAAADAAIAAAAGAAMAAAADAAIAAAAGAAQAAAADAAIAAAAGAAUAAAADAAIAAAAGAAYAAAADAAIAAAAGAAcAAAADAAIAAAAGAAgAAAADAAIAAAAGAAkAAAADAAIAAAAHAAMAAAADAAIAAAAHAAQAAAADAAIAAAAHAAUAAAADAAIAAAAHAAYAAAADAAIAAAAHAAcAAAADAAIAAAAHAAgAAAADAAIAAAAHAAkAAAADAAIAAAAUAAMAAAADAAIAAAAUAAQAAAADAAIAAAAUAAUAAAADAAIAAAAUAAYAAAADAAIAAAAUAAcAAAADAAIAAAAUAAgAAAADAAIAAAAUAAkAAAADAAIAAAAVAAMAAAADAAIAAAAVAAQAAAADAAIAAAAVAAUAAAADAAIAAAAVAAYAAAADAAIAAAAVAAcAAAADAAIAAAAVAAgAAAADAAIAAAAVAAkAAAADAAIAAAAWAAMAAAADAAIAAAAWAAQAAAADAAIAAAAWAAUAAAADAAIAAAAWAAYAAAADAAIAAAAWAAcAAAADAAIAAAAWAAgAAAADAAIAAAAWAAkAAAADAAIAAAACAAoAAAACAAQAAAACAAcAAAACAAMAAAACAAgAAAACAAMAAAACAAkAAAACAAMAAAACAAUAAAACAAMAAAACAAYAAAACAAMAAAACAAIAAAACAAEAAAACAAMAAAACAAMAAAACAAQAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_g4v7s")
 
 [node name="Content" type="Control" parent="." unique_id=1321852931]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="LoadingScreen" type="Control" parent="Content" unique_id=721886006]
-anchors_preset = 0
-offset_left = 132.96123
-offset_top = 36.93555
-offset_right = 314.9972
-offset_bottom = 170.99817
+offset_right = 424.0
+offset_bottom = 240.0
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Content/LoadingScreen" unique_id=615294223]
-position = Vector2(90, 75)
+[node name="LoadingScreen" type="Control" parent="Content" unique_id=721886006]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -88.0
+offset_right = 172.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="LoadingBar" type="AnimatedSprite2D" parent="Content/LoadingScreen" unique_id=615294223]
+position = Vector2(168, 72)
+scale = Vector2(2.5000002, 1)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"Loading"
-autoplay = "Loading"
-frame_progress = 0.060856488
+animation = &"loading"
+autoplay = "loading"
 
 [node name="Stage1" type="Control" parent="Content" unique_id=193050970]
 anchors_preset = 0
-offset_left = 132.96123
-offset_top = 36.93555
-offset_right = 314.9972
-offset_bottom = 170.99817
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 176.0
 metadata/_edit_lock_ = true
+
+[node name="Container" type="Control" parent="Content/Stage1" unique_id=786474324]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 80.0
+metadata/_edit_lock_ = true
+
+[node name="Button1" type="TextureButton" parent="Content/Stage1/Container" unique_id=587219789 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_right = 56.0
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_materials")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Button2" type="TextureButton" parent="Content/Stage1/Container" unique_id=493968557 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -56.0
+offset_right = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_materials")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Button3" type="TextureButton" parent="Content/Stage1/Container" unique_id=1385881472 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_materials")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
 
 [node name="Stage2" type="Control" parent="Content" unique_id=1143064383]
 anchors_preset = 0
-offset_left = 132.96123
-offset_top = 36.93555
-offset_right = 314.9972
-offset_bottom = 170.99817
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 176.0
 metadata/_edit_lock_ = true
+
+[node name="Container" type="Control" parent="Content/Stage2" unique_id=1926733968]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 80.0
+metadata/_edit_lock_ = true
+
+[node name="Button1" type="TextureButton" parent="Content/Stage2/Container" unique_id=1994720309 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_right = 56.0
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oxygen")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Button2" type="TextureButton" parent="Content/Stage2/Container" unique_id=643203168 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -56.0
+offset_right = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oxygen")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Button3" type="TextureButton" parent="Content/Stage2/Container" unique_id=1781901703 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oxygen")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
 
 [node name="Stage3" type="Control" parent="Content" unique_id=1004861079]
+visible = false
 anchors_preset = 0
-offset_left = 132.96123
-offset_top = 36.93555
-offset_right = 314.9972
-offset_bottom = 170.99817
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 176.0
 metadata/_edit_lock_ = true
 
-[node name="Stage4" type="Control" parent="Content" unique_id=1893503228]
+[node name="Container" type="Control" parent="Content/Stage3" unique_id=1056157155]
 anchors_preset = 0
-offset_left = 133.03764
-offset_top = 37.016674
-offset_right = 315.0736
-offset_bottom = 171.0793
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 80.0
 metadata/_edit_lock_ = true
+
+[node name="Button1" type="TextureButton" parent="Content/Stage3/Container" unique_id=2108628420 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_right = 56.0
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fuel")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Button2" type="TextureButton" parent="Content/Stage3/Container" unique_id=655260523 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -56.0
+offset_right = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fuel")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Button3" type="TextureButton" parent="Content/Stage3/Container" unique_id=1533170966 groups=["ButtonGroup"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fuel")
+texture_normal = ExtResource("4_hghke")
+texture_pressed = ExtResource("5_3uw4b")
+texture_disabled = ExtResource("4_hghke")
+stretch_mode = 5
+
+[node name="Stage4" type="Control" parent="Content" unique_id=1893503228]
+visible = false
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 176.0
+metadata/_edit_lock_ = true
+
+[node name="BottomContainer" type="Control" parent="Content" unique_id=1709454216]
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 112.0
+offset_right = 328.0
+offset_bottom = 160.0
+
+[node name="WeightLabel" type="Label" parent="Content/BottomContainer" unique_id=1067386522]
+layout_mode = 1
+offset_right = 79.0
+offset_bottom = 23.0
+text = "Weight: ---"
+
+[node name="MaterialLabel" type="Label" parent="Content/BottomContainer" unique_id=1436838420]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 97.0
+grow_vertical = 0
+text = "Materials: ---"
+
+[node name="NextButton" type="TextureButton" parent="Content/BottomContainer" unique_id=1106972535]
+custom_minimum_size = Vector2(5, 5)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("6_3uw4b")
+stretch_mode = 0
