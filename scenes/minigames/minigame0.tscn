@@ -4,9 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://yb6tgxpop31b" path="res://assets/minigame/scene0/minigame0.png" id="1_j2758"]
 [ext_resource type="Texture2D" uid="uid://s4du6dpxmbmc" path="res://assets/minigame/scene0/Loading.png" id="3_4u5ea"]
 [ext_resource type="Texture2D" uid="uid://0kvtq2t3girw" path="res://assets/minigame/scene0/SteelOff.png" id="4_hghke"]
+[ext_resource type="Texture2D" uid="uid://wdirqv7dmsh" path="res://assets/minigame/scene0/TitaniumOff.png" id="4_r0ogd"]
 [ext_resource type="Texture2D" uid="uid://d0pkduav6dtah" path="res://assets/minigame/scene0/SteelOn.png" id="5_3uw4b"]
+[ext_resource type="Texture2D" uid="uid://c2jlishvkxyxu" path="res://assets/minigame/scene0/TitaniumOn.png" id="5_xet6k"]
 [ext_resource type="Texture2D" uid="uid://dk11ws8lpanjp" path="res://icon.svg" id="6_3uw4b"]
+[ext_resource type="Texture2D" uid="uid://c4pgvabq8e518" path="res://assets/minigame/scene0/AluminumOff.png" id="6_88ru1"]
 [ext_resource type="FontFile" uid="uid://bypn4d5oy1vws" path="res://assets/font/LcdSolid-VPzB.ttf" id="6_yyqud"]
+[ext_resource type="Texture2D" uid="uid://jgwjw3audp7r" path="res://assets/minigame/scene0/AluminumOn.png" id="7_248vc"]
+[ext_resource type="Texture2D" uid="uid://diqt3cimagkv7" path="res://assets/minigame/scene0/OxygenOff.png" id="10_nt6km"]
+[ext_resource type="Texture2D" uid="uid://dn47ces2uty0t" path="res://assets/minigame/scene0/OxygenOn.png" id="11_5mpee"]
+[ext_resource type="Texture2D" uid="uid://drsr4a4o3im6l" path="res://assets/minigame/scene0/Yes.png" id="14_dg2a0"]
+[ext_resource type="Texture2D" uid="uid://rko24ur1ogcc" path="res://assets/minigame/scene0/No.png" id="15_yxquq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_351ja"]
 texture = ExtResource("1_j2758")
@@ -337,9 +345,9 @@ offset_right = 56.0
 grow_vertical = 0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_materials")
-texture_normal = ExtResource("4_hghke")
-texture_pressed = ExtResource("5_3uw4b")
-texture_disabled = ExtResource("4_hghke")
+texture_normal = ExtResource("4_r0ogd")
+texture_pressed = ExtResource("5_xet6k")
+texture_disabled = ExtResource("4_r0ogd")
 stretch_mode = 5
 
 [node name="Button2" type="TextureButton" parent="Content/Stage1/Container" unique_id=493968557 groups=["ButtonGroup"]]
@@ -356,9 +364,9 @@ grow_horizontal = 2
 grow_vertical = 0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_materials")
-texture_normal = ExtResource("4_hghke")
-texture_pressed = ExtResource("5_3uw4b")
-texture_disabled = ExtResource("4_hghke")
+texture_normal = ExtResource("6_88ru1")
+texture_pressed = ExtResource("7_248vc")
+texture_disabled = ExtResource("6_88ru1")
 stretch_mode = 5
 
 [node name="Button3" type="TextureButton" parent="Content/Stage1/Container" unique_id=1385881472 groups=["ButtonGroup"]]
@@ -407,9 +415,9 @@ offset_right = 56.0
 grow_vertical = 0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oxygen")
-texture_normal = ExtResource("4_hghke")
-texture_pressed = ExtResource("5_3uw4b")
-texture_disabled = ExtResource("4_hghke")
+texture_normal = ExtResource("10_nt6km")
+texture_pressed = ExtResource("11_5mpee")
+texture_hover = ExtResource("10_nt6km")
 stretch_mode = 5
 
 [node name="Button2" type="TextureButton" parent="Content/Stage2/Container" unique_id=643203168 groups=["ButtonGroup"]]
@@ -426,9 +434,9 @@ grow_horizontal = 2
 grow_vertical = 0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oxygen")
-texture_normal = ExtResource("4_hghke")
-texture_pressed = ExtResource("5_3uw4b")
-texture_disabled = ExtResource("4_hghke")
+texture_normal = ExtResource("10_nt6km")
+texture_pressed = ExtResource("11_5mpee")
+texture_disabled = ExtResource("10_nt6km")
 stretch_mode = 5
 
 [node name="Button3" type="TextureButton" parent="Content/Stage2/Container" unique_id=1781901703 groups=["ButtonGroup"]]
@@ -444,9 +452,9 @@ grow_horizontal = 0
 grow_vertical = 0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_oxygen")
-texture_normal = ExtResource("4_hghke")
-texture_pressed = ExtResource("5_3uw4b")
-texture_disabled = ExtResource("4_hghke")
+texture_normal = ExtResource("10_nt6km")
+texture_pressed = ExtResource("11_5mpee")
+texture_disabled = ExtResource("10_nt6km")
 stretch_mode = 5
 
 [node name="Stage3" type="Control" parent="Content" unique_id=1004861079]
@@ -589,7 +597,8 @@ alignment = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("6_3uw4b")
+texture_normal = ExtResource("14_dg2a0")
+texture_pressed = ExtResource("14_dg2a0")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -598,7 +607,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-texture_normal = ExtResource("6_3uw4b")
+texture_normal = ExtResource("15_yxquq")
 ignore_texture_size = true
 stretch_mode = 5
 

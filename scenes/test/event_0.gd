@@ -3,7 +3,7 @@ extends Area2D
 const GUIDE_PORTRAIT := preload("res://assets/splashart/jinSplashArt.png")
 
 @export var minigame_scene: PackedScene
-@export var trivia_scene: PackedScene
+@export var launch_scene: PackedScene
 @export var transition_duration := 1.0
 
 @onready var chat_panel: Control = get_node("../CanvasLayer/ChatPanel")
@@ -47,8 +47,8 @@ func _on_minigame_completed() -> void:
 		minigame.queue_free()
 	minigame = null
 
-	if trivia_scene == null:
-		push_error("Trivia scene is not assigned to event0.")
+	if launch_scene == null:
+		push_error("Launch scene is not assigned to event0.")
 		get_tree().paused = false
 		_transitioning = false
 		return
@@ -61,7 +61,7 @@ func _on_minigame_completed() -> void:
 	)
 	await chat_panel.dialogue_finished
 	await _fade_to_black()
-	get_tree().change_scene_to_packed(trivia_scene)
+	get_tree().change_scene_to_packed(launch_scene)
 
 func _fade_to_black() -> void:
 	var fade_layer := CanvasLayer.new()
