@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://sm2de1jlvw46"]
+
+[ext_resource type="Script" uid="uid://bmkrny6av0tvb" path="res://scenes/trivia/trivia_video.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://byp4ougymul8v" path="res://scenes/chatDialogue/chatPanel.tscn" id="2_chat"]
+[ext_resource type="VideoStream" uid="uid://dqljk0je251ey" path="res://scenes/trivia/launch2.ogv" id="2_dc6kj"]
+
+[node name="TriviaVideo" type="Control" unique_id=1049737399]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1049128598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="." unique_id=1306305693]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_dc6kj")
+expand = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=242900525]
+layer = 10
+
+[node name="ChatPanel" parent="CanvasLayer" unique_id=1134211290 instance=ExtResource("2_chat")]
+
+[node name="FadeCanvasLayer" type="CanvasLayer" parent="." unique_id=1747125843]
+layer = 20
+
+[node name="FadeLayer" type="ColorRect" parent="FadeCanvasLayer" unique_id=1321385158]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

@@ -30,12 +30,12 @@ func start_dialogue() -> void:
 
 	await show_line(
 		"Jin",
-		"Go to the computer and start designing our shuttle for Laika.",
+		"Go to the computer and start designing our capsule for Laika.",
 	)
 	await show_line(
 		"Jin",
-		"The shuttle passenger 'Laika' is 13 lbs, make sure the total combined weight of the shuttle
-		and the doggo does not exceed X lbs.",
+		"The shuttle passenger 'Laika' is 13 lb, make sure the total combined weight of the capsule
+		and the doggo does not exceed 1121 lb.",
 	)
 	await show_line(
 		"Jin",

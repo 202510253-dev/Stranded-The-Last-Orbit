@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://86nsp5hfby0s" path="res://characters/npc/guide_npc.tscn" id="3_hdywh"]
 [ext_resource type="Script" uid="uid://bky1ksntvopip" path="res://scenes/test/event_0.gd" id="4_lxbn1"]
 [ext_resource type="PackedScene" uid="uid://ccww5sut3krbi" path="res://scenes/minigames/minigame0.tscn" id="5_minigame"]
+[ext_resource type="PackedScene" path="res://scenes/trivia/trivia_video.tscn" id="9_trivia"]
 [ext_resource type="Script" uid="uid://b81mf1qheo7tp" path="res://scenes/test/opening_cutscene.gd" id="6_opening"]
 [ext_resource type="PackedScene" uid="uid://byp4ougymul8v" path="res://scenes/chatDialogue/chatPanel.tscn" id="7_wuwra"]
 [ext_resource type="Script" uid="uid://dorykayrw3m0l" path="res://scenes/test/npc_interact.gd" id="8_npc_interact"]
@@ -46,6 +47,7 @@ position = Vector2(166.75656, 121.12963)
 [node name="Computer" type="Area2D" parent="." unique_id=1636774014]
 script = ExtResource("4_lxbn1")
 minigame_scene = ExtResource("5_minigame")
+trivia_scene = ExtResource("9_trivia")
 
 [node name="event0" type="CollisionShape2D" parent="Computer" unique_id=1022034562]
 position = Vector2(136.14207, 77.49212)
