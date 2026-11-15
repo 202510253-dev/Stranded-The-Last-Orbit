@@ -96,7 +96,7 @@ script = ExtResource("5_r7wgf")
 layout_mode = 2
 
 [node name="winTimer" type="Timer" parent="." unique_id=83076457]
-wait_time = 5.0
+wait_time = 30.0
 
 [connection signal="timeout" from="SpawnRate" to="." method="_on_spawn_rate_timeout"]
 [connection signal="hit" from="Rocket" to="." method="_on_rocket_hit"]

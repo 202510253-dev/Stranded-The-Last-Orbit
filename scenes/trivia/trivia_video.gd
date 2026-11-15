@@ -3,6 +3,7 @@ extends Control
 signal finished
 
 const SPACESHIP_SCENE := preload("res://scenes/test/SpaceShip.tscn")
+const ASTEROID_CLICKER := preload("res://scenes/unIntegratedScenes/minigameAsteroid.tscn")
 
 @export var fade_duration := 1.0
 @export var music_fade_duration := 2.0
@@ -60,4 +61,4 @@ func _fade_to_black() -> void:
 
 func _finish() -> void:
 	finished.emit()
-	get_tree().change_scene_to_packed(SPACESHIP_SCENE)
+	get_tree().change_scene_to_packed(ASTEROID_CLICKER)
