@@ -1,16 +1,67 @@
 [gd_scene format=3 uid="uid://pvv4re1ssxr1"]
 
 [ext_resource type="Script" uid="uid://cg1opdst2o22l" path="res://characters/unIntegratedPlayers/rocket.gd" id="1_877hr"]
-[ext_resource type="Texture2D" uid="uid://by6l4waf4axt" path="res://assets/unIntegratedAssets/PlayerTestSprite.png" id="1_atdsd"]
+[ext_resource type="Texture2D" uid="uid://jqld2h48ywya" path="res://assets/unIntegratedAssets/rocket.png" id="2_877hr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdju5"]
+atlas = ExtResource("2_877hr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giiu7"]
+atlas = ExtResource("2_877hr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d7vl"]
+atlas = ExtResource("2_877hr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhn8d"]
+atlas = ExtResource("2_877hr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdju5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giiu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d7vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhn8d")
+}],
+"loop": 1,
+"name": &"Rocket",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 7.0
+radius = 6.0
 
-[node name="Rocket" type="CharacterBody2D" unique_id=786328473]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 6.0
+
+[node name="Rocket" type="Area2D" unique_id=1809072659]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_877hr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1391963402]
-texture = ExtResource("1_atdsd")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=340388740]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"Rocket"
+frame_progress = 0.8819338
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1219732376]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1219732376]
 shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1643888102]
+
+[node name="PhysicsHitbox" type="CollisionShape2D" parent="RigidBody2D" unique_id=1491054729]
+shape = SubResource("CircleShape2D_yf5fn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

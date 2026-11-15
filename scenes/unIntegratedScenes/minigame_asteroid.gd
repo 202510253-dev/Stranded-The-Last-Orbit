@@ -6,15 +6,16 @@ extends Node2D
 @export var minVelocity = 67.0;
 @export var maxVelocity = 100.0;
 
+@onready var Rocket = $Rocket
+
 var currentHealth = health
 
 func _ready() -> void:
 	new_game()
 
-func _on_rocket_hit() -> void:
-	currentHealth -= 1
-	if (currentHealth == 0):
-		game_over()
+func _process(delta: float) -> void:
+	if !is_instance_valid(Rocket):
+		get_tree().reload_current_scene()
 
 func game_over() -> void:
 	$SpawnRate.stop()

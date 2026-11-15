@@ -1,14 +1,14 @@
-extends CharacterBody2D
+extends Area2D
 
 signal hit
 
-@export var health := 3 #modifiable health
+@export var health := 4 #modifiable health
 var rocketInstance #used to determine the specific Object instance
 
 func _ready() -> void:
 	var id = get_instance_id() #gets unique id of Object Instance
 	rocketInstance = instance_from_id(id) #returns Object reference
-	
+	$Sprite2D.play("Rocket")
 
 # removes rocket from the scene
 func removeRocket() -> void:
@@ -26,4 +26,8 @@ func _process(delta: float) -> void:
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false
+	$Hurtbox.disabled = false
+
+
+func _on_body_entered(body: Node2D) -> void:
+	health -= 1
