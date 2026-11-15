@@ -9,9 +9,6 @@ func _ready() -> void:
 func removeAsteroid() -> void:
 	asteroidInstance.queue_free()
 
-func _on_area_2d_asteroid_click() -> void:
-	print("Signal Received!")
-	removeAsteroid()
-
-func _on_body_entered(body: Node) -> void:
+func _on_animated_sprite_2d_animation_finished() -> void:
+	#print("Signal to remove asteroid received")
 	removeAsteroid()
