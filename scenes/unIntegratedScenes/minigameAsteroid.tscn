@@ -41,34 +41,7 @@ tile_set = SubResource("TileSet_g4v7s")
 [node name="Rocket" parent="." unique_id=786328473 instance=ExtResource("1_qpo1b")]
 
 [node name="Camera2D" type="Camera2D" parent="Rocket" unique_id=1642030950]
-<<<<<<< HEAD
-<<<<<<< HEAD
 position = Vector2(20, 0)
-=======
-limit_left = -216
-limit_top = -124
-limit_right = 210
-limit_bottom = 116
->>>>>>> 01035a2 (WIP: Almost Ready Asteroid Clicker)
-
-[node name="SpawnRate" type="Timer" parent="." unique_id=1114788425]
-wait_time = 0.75
-
-[node name="RocketPosition" type="Marker2D" parent="." unique_id=1035296207]
-
-[node name="AsteroidSpawnerPerimeter" type="Path2D" parent="." unique_id=681993287]
-position = Vector2(-44, -1.9999998)
-scale = Vector2(2.4119363, 2.6017256)
-curve = SubResource("Curve2D_wunvn")
-
-[node name="AsteroidSpawnLocation" type="PathFollow2D" parent="AsteroidSpawnerPerimeter" unique_id=543258022]
-position = Vector2(151, -74)
-rotation = 1.5707964
-
-<<<<<<< HEAD
-[node name="Rocket2" parent="." unique_id=497174051 instance=ExtResource("1_qpo1b")]
-position = Vector2(0, 20)
-=======
 limit_left = -216
 limit_top = -124
 limit_right = 210
@@ -88,8 +61,11 @@ curve = SubResource("Curve2D_wunvn")
 position = Vector2(151, -74)
 rotation = 1.5707964
 
-=======
->>>>>>> 01035a2 (WIP: Almost Ready Asteroid Clicker)
+[node name="SpawnRate2" type="Timer" parent="." unique_id=1308248763]
+wait_time = 0.75
+
+[node name="RocketPosition2" type="Marker2D" parent="." unique_id=1324246839]
+
 [node name="Container" type="Container" parent="." unique_id=1500609169]
 propagate_maximum_size = false
 offset_left = -214.0
@@ -103,7 +79,3 @@ layout_mode = 2
 
 [connection signal="hit" from="Rocket" to="." method="_on_rocket_hit"]
 [connection signal="timeout" from="SpawnRate" to="." method="_on_spawn_rate_timeout"]
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> 01035a2 (WIP: Almost Ready Asteroid Clicker)
