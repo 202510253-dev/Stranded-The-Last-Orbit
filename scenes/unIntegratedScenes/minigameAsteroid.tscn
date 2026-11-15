@@ -83,7 +83,6 @@ position = Vector2(151, -74)
 rotation = 1.5707964
 
 [node name="Rocket" parent="." unique_id=786328473 instance=ExtResource("1_qpo1b")]
-health = 2
 
 [node name="Container" type="Container" parent="." unique_id=1500609169]
 propagate_maximum_size = false
@@ -96,5 +95,9 @@ script = ExtResource("5_r7wgf")
 [node name="VBoxContainer" type="VBoxContainer" parent="Container" unique_id=1226571158]
 layout_mode = 2
 
+[node name="winTimer" type="Timer" parent="." unique_id=83076457]
+wait_time = 5.0
+
 [connection signal="timeout" from="SpawnRate" to="." method="_on_spawn_rate_timeout"]
 [connection signal="hit" from="Rocket" to="." method="_on_rocket_hit"]
+[connection signal="timeout" from="winTimer" to="." method="_on_win_timer_timeout"]

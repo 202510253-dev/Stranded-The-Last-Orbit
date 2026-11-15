@@ -16,7 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !is_instance_valid(Rocket):
 		get_tree().reload_current_scene()
-
+		
 func game_over() -> void:
 	$SpawnRate.stop()
 	set_process_input(false)
@@ -25,6 +25,7 @@ func new_game() -> void:
 	currentHealth = health
 	$Rocket.start($RocketPosition.position)
 	$SpawnRate.start()
+	$winTimer.start()
 
 
 func _on_spawn_rate_timeout() -> void:
@@ -44,3 +45,7 @@ func _on_spawn_rate_timeout() -> void:
 	asteroid.linear_velocity = velocity.rotated(direction)
 	
 	add_child(asteroid)
+
+
+func _on_win_timer_timeout() -> void:
+	get_tree().unload_current_scene()
