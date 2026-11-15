@@ -3,13 +3,17 @@
 [ext_resource type="TileSet" uid="uid://bbp7royf374pn" path="res://tilesets/objects.tres" id="1_7uawy"]
 [ext_resource type="TileSet" uid="uid://dha1pa2tfwvqk" path="res://tilesets/spaceShip.tres" id="1_kxdo0"]
 [ext_resource type="PackedScene" uid="uid://dnqd41ml7fddb" path="res://characters/player/player.tscn" id="2_7uawy"]
+[ext_resource type="PackedScene" uid="uid://86nsp5hfby0s" path="res://characters/npc/guide_npc.tscn" id="3_hdywh"]
 [ext_resource type="Script" uid="uid://bky1ksntvopip" path="res://scenes/test/event_0.gd" id="4_lxbn1"]
 [ext_resource type="PackedScene" uid="uid://ccww5sut3krbi" path="res://scenes/minigames/minigame0.tscn" id="5_minigame"]
+[ext_resource type="Script" uid="uid://b81mf1qheo7tp" path="res://scenes/test/opening_cutscene.gd" id="6_opening"]
+[ext_resource type="PackedScene" uid="uid://byp4ougymul8v" path="res://scenes/chatDialogue/chatPanel.tscn" id="7_wuwra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(11.891483, 23.033072)
 
 [node name="testSceneTileMap" type="Node2D" unique_id=1483749293]
+script = ExtResource("6_opening")
 
 [node name="gameTileMap" type="Node2D" parent="." unique_id=879982055]
 
@@ -30,7 +34,10 @@ tile_map_data = PackedByteArray("AAAIAAUAAAAAAAQAAAAIAAQAAAAFAAYAAAAJAAQAAAAGAAY
 tile_set = ExtResource("1_7uawy")
 
 [node name="Player" parent="." unique_id=81086923 instance=ExtResource("2_7uawy")]
-position = Vector2(97, 55)
+position = Vector2(17.397896, 194.21054)
+
+[node name="guide_npc" parent="." unique_id=1515316278 instance=ExtResource("3_hdywh")]
+position = Vector2(166.75656, 121.12963)
 
 [node name="Computer" type="Area2D" parent="." unique_id=1636774014]
 script = ExtResource("4_lxbn1")
@@ -39,3 +46,8 @@ minigame_scene = ExtResource("5_minigame")
 [node name="event0" type="CollisionShape2D" parent="Computer" unique_id=1022034562]
 position = Vector2(136.14207, 77.49212)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1338792524]
+
+[node name="ChatPanel" parent="CanvasLayer" unique_id=1091042661 instance=ExtResource("7_wuwra")]
+visible = false

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal hit
+
 @export var health := 3 #modifiable health
 var rocketInstance #used to determine the specific Object instance
 
@@ -14,9 +16,13 @@ func removeRocket() -> void:
 #add new code either here or above
 #that would occur if health == 0
 func checkHealth() -> void:
-	removeRocket() if health == 0 else null
-	#ternary structure "do_this" if "value comparitor value"
-	#is true else "do_that", which in this case is nothing
+	if (health == 0):
+		removeRocket()
 	
 func _process(delta: float) -> void:
 	checkHealth()
+	
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
