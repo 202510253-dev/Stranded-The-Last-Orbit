@@ -30,11 +30,6 @@ folder_colors={
 "res://assets/unIntegratedAssets/": "yellow",
 "res://characters/unIntegratedPlayers/": "yellow",
 "res://scenes/unIntegratedScenes/": "yellow"
-<<<<<<< HEAD
-=======
-"res://characters/unIntegratedPlayers/": "yellow",
-"res://scenes/unIntegratedScenes/": "yellow"
->>>>>>> main
 }
 
 [input]
