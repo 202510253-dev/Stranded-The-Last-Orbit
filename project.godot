@@ -24,6 +24,7 @@ Global="*uid://bhr5lb5sir3m"
 
 window/size/viewport_width=426
 window/size/viewport_height=240
+window/size/mode=4
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
