@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/opening/opening_disclaimer.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/chatDialogue/chatPanel.tscn" id="2_chat"]
+
+[node name="OpeningDisclaimer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+mouse_filter = 2
+
+[node name="RadioStatic" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ChatPanel" parent="CanvasLayer" instance=ExtResource("2_chat")]
+
+[node name="FadeCanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="FadeLayer" type="ColorRect" parent="FadeCanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+mouse_filter = 2
