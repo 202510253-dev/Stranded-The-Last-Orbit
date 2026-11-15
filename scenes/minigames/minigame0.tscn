@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0kvtq2t3girw" path="res://assets/minigame/scene0/SteelOff.png" id="4_hghke"]
 [ext_resource type="Texture2D" uid="uid://d0pkduav6dtah" path="res://assets/minigame/scene0/SteelOn.png" id="5_3uw4b"]
 [ext_resource type="Texture2D" uid="uid://dk11ws8lpanjp" path="res://icon.svg" id="6_3uw4b"]
+[ext_resource type="FontFile" uid="uid://bypn4d5oy1vws" path="res://assets/font/LcdSolid-VPzB.ttf" id="6_yyqud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_351ja"]
 texture = ExtResource("1_j2758")
@@ -286,6 +287,7 @@ offset_bottom = 240.0
 metadata/_edit_lock_ = true
 
 [node name="LoadingScreen" type="Control" parent="Content" unique_id=721886006]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -308,6 +310,8 @@ animation = &"loading"
 autoplay = "loading"
 
 [node name="Stage1" type="Control" parent="Content" unique_id=193050970]
+visible = false
+layout_mode = 1
 anchors_preset = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -376,6 +380,8 @@ texture_disabled = ExtResource("4_hghke")
 stretch_mode = 5
 
 [node name="Stage2" type="Control" parent="Content" unique_id=1143064383]
+visible = false
+layout_mode = 1
 anchors_preset = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -445,6 +451,7 @@ stretch_mode = 5
 
 [node name="Stage3" type="Control" parent="Content" unique_id=1004861079]
 visible = false
+layout_mode = 1
 anchors_preset = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -512,16 +519,9 @@ texture_pressed = ExtResource("5_3uw4b")
 texture_disabled = ExtResource("4_hghke")
 stretch_mode = 5
 
-[node name="Stage4" type="Control" parent="Content" unique_id=1893503228]
-visible = false
-anchors_preset = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 384.0
-offset_bottom = 176.0
-metadata/_edit_lock_ = true
-
 [node name="BottomContainer" type="Control" parent="Content" unique_id=1709454216]
+visible = false
+layout_mode = 1
 anchors_preset = 0
 offset_left = 72.0
 offset_top = 112.0
@@ -532,7 +532,8 @@ offset_bottom = 160.0
 layout_mode = 1
 offset_right = 79.0
 offset_bottom = 23.0
-text = "Weight: ---"
+theme_override_fonts/font = ExtResource("6_yyqud")
+text = "Weight: "
 
 [node name="MaterialLabel" type="Label" parent="Content/BottomContainer" unique_id=1436838420]
 layout_mode = 1
@@ -542,9 +543,11 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 97.0
 grow_vertical = 0
-text = "Materials: ---"
+theme_override_fonts/font = ExtResource("6_yyqud")
+text = "Materials: "
 
 [node name="NextButton" type="TextureButton" parent="Content/BottomContainer" unique_id=1106972535]
+visible = false
 custom_minimum_size = Vector2(5, 5)
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 1
@@ -560,3 +563,53 @@ grow_horizontal = 0
 grow_vertical = 2
 texture_normal = ExtResource("6_3uw4b")
 stretch_mode = 0
+
+[node name="Summary" type="Control" parent="Content" unique_id=1893503228]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 176.0
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1706807563]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.150665
+offset_top = 33.52975
+offset_right = -40.49585
+offset_bottom = -67.15202
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Yes" type="TextureButton" parent="HBoxContainer" unique_id=341750148]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_3uw4b")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="No" type="TextureButton" parent="HBoxContainer" unique_id=2088124166]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = ExtResource("6_3uw4b")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=922957227]
+offset_left = 39.285973
+offset_top = 54.020138
+offset_right = 379.36752
+offset_bottom = 86.95488
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1902215990]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Confirm?"
+metadata/_edit_lock_ = true
