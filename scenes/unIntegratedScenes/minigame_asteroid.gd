@@ -3,8 +3,8 @@ extends Node2D
 @export var asteroid_scene: PackedScene
 @export var health = 3
 
-@export var minVelocity = 67.0;
-@export var maxVelocity = 100.0;
+@export var minVelocity = 45.0
+@export var maxVelocity = 75.0
 
 @onready var Rocket = $Rocket
 
