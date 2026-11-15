@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Stranded: The Last Orbit"
-run/main_scene="res://scenes/opening/opening_disclaimer.tscn"
+run/main_scene="uid://6nk6ncr3b6vt"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Bgm="*uid://bbgle1tpenvj4"
+Global="*uid://bhr5lb5sir3m"
 
 [display]
 
