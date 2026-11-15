@@ -320,7 +320,6 @@ offset_bottom = 176.0
 metadata/_edit_lock_ = true
 
 [node name="Container" type="Control" parent="Content/Stage1" unique_id=786474324]
-visible = false
 anchors_preset = 0
 offset_left = 40.0
 offset_top = 8.0
@@ -548,6 +547,7 @@ theme_override_fonts/font = ExtResource("6_yyqud")
 text = "Materials: "
 
 [node name="NextButton" type="TextureButton" parent="Content/BottomContainer" unique_id=1106972535]
+visible = false
 custom_minimum_size = Vector2(5, 5)
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 1
@@ -571,4 +571,47 @@ offset_left = 32.0
 offset_top = 32.0
 offset_right = 384.0
 offset_bottom = 176.0
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1706807563]
+visible = false
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.150665
+offset_top = 33.52975
+offset_right = -40.49585
+offset_bottom = -67.15202
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Yes" type="TextureButton" parent="HBoxContainer" unique_id=341750148]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_3uw4b")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="No" type="TextureButton" parent="HBoxContainer" unique_id=2088124166]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = ExtResource("6_3uw4b")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=922957227]
+visible = false
+offset_left = 39.285973
+offset_top = 54.020138
+offset_right = 379.36752
+offset_bottom = 86.95488
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1902215990]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Confirm?"
 metadata/_edit_lock_ = true

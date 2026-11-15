@@ -23,12 +23,8 @@ const CHAT_PANEL_SCENE := preload("res://scenes/chatDialogue/chatPanel.tscn")
 @onready var fuel_button_2: TextureButton = $Content/Stage3/Container/Button2
 @onready var fuel_button_3: TextureButton = $Content/Stage3/Container/Button3
 @onready var next_button: TextureButton = $Content/BottomContainer/NextButton
-@onready var summary_material_label: Label = $Content/Summary/SummaryLayout/MaterialLabel
-@onready var summary_oxygen_label: Label = $Content/Summary/SummaryLayout/OxygenLabel
-@onready var summary_fuel_label: Label = $Content/Summary/SummaryLayout/FuelLabel
-@onready var retry_button: Button = $Content/Summary/SummaryLayout/ActionButtons/RetryButton
-@onready var confirm_button: Button = $Content/Summary/SummaryLayout/ActionButtons/ConfirmButton
-
+@onready var summary_controls: Control = $HBoxContainer
+@onready var summary_prompt: Control = $VBoxContainer
 
 
 var selected_material: String = ""
@@ -52,6 +48,8 @@ func _ready() -> void:
 	material_label.hide()
 	weight_label.hide()
 	next_button.hide()
+	summary_controls.hide()
+	summary_prompt.hide()
 
 	chat_panel = _get_chat_panel()
 	if chat_panel == null:
@@ -70,8 +68,8 @@ func _ready() -> void:
 	fuel_button_2.pressed.connect(_on_fuel_button_2_pressed)
 	fuel_button_3.pressed.connect(_on_fuel_button_3_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)
-	retry_button.pressed.connect(_on_retry_button_pressed)
-	confirm_button.pressed.connect(_on_confirm_button_pressed)
+	$HBoxContainer/Yes.pressed.connect(_on_summary_yes_pressed)
+	$HBoxContainer/No.pressed.connect(_on_summary_no_pressed)
 	loading_bar.play("loading")
 
 func _get_chat_panel() -> Control:
@@ -103,6 +101,7 @@ func _on_loading_finished() -> void:
 		await get_tree().create_timer(1.0).timeout
 		loading_screen.hide()
 		stage_1.show()
+		bottom_1.show()
 		material_label.show()
 		weight_label.show()
 		next_button.show()
@@ -180,17 +179,22 @@ func _on_next_button_pressed() -> void:
 		if selected_fuel == 0:
 			return
 		stored_fuel = selected_fuel
-		summary_material_label.text = "Material: " + stored_material
-		summary_oxygen_label.text = "Oxygen: " + str(stored_oxygen) + " L"
-		summary_fuel_label.text = "Fuel: " + str(stored_fuel) + " L"
 		stage_3.hide()
-		stage_3.visible = false
-		stage_4.show()
-		stage_4.visible = true
 		bottom_1.visible = false
 		next_button.hide()
+		await show_line(
+			"Jin",
+			"You selected "
+			+ stored_material
+			+ ", weighing "
+			+ str(stored_weight)
+			+ " kg in total. Do you confirm?",
+		)
+		stage_4.show()
+		summary_controls.show()
+		summary_prompt.show()
 
-func _on_retry_button_pressed() -> void:
+func _on_summary_no_pressed() -> void:
 	selected_material = ""
 	selected_weight = 0.0
 	stored_material = ""
@@ -207,19 +211,18 @@ func _on_retry_button_pressed() -> void:
 	]:
 		button.set_pressed(false)
 
-	summary_material_label.text = "Material: ---"
-	summary_oxygen_label.text = "Oxygen: ---"
-	summary_fuel_label.text = "Fuel: ---"
 	material_label.text = "Material: ---"
 	weight_label.text = "Weight: ---"
 	stage_4.hide()
+	summary_controls.hide()
+	summary_prompt.hide()
 	stage_2.hide()
 	stage_3.hide()
 	stage_1.show()
 	bottom_1.show()
 	next_button.show()
 
-func _on_confirm_button_pressed() -> void:
+func _on_summary_yes_pressed() -> void:
 	completed.emit()
 
 func show_line(speaker_name: String, dialogue_text: String) -> void:
