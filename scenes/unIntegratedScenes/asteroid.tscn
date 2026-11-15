@@ -114,12 +114,20 @@ gravity_scale = 0.0
 script = ExtResource("1_yt067")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1235514978]
 texture = ExtResource("2_4w5bu")
+=======
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=605365272]
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+animation = &"destroid"
+script = ExtResource("4_tya26")
+>>>>>>> 01035a2 (WIP: Almost Ready Asteroid Clicker)
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1668280240]
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D" unique_id=1668280240]
 script = ExtResource("3_k6muh")
 
+<<<<<<< HEAD
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1149366371]
 =======
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=605365272]
@@ -132,11 +140,15 @@ script = ExtResource("3_k6muh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D" unique_id=1149366371]
 >>>>>>> main
+=======
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D" unique_id=1149366371]
+>>>>>>> 01035a2 (WIP: Almost Ready Asteroid Clicker)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560357194]
 shape = SubResource("CircleShape2D_g4v7s")
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="asteroidClick" from="Sprite2D/Area2D" to="." method="_on_area_2d_asteroid_click"]
@@ -144,3 +156,7 @@ shape = SubResource("CircleShape2D_g4v7s")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="asteroidClick" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D" method="_on_area_2d_asteroid_click"]
 >>>>>>> main
+=======
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="asteroidClick" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D" method="_on_area_2d_asteroid_click"]
+>>>>>>> 01035a2 (WIP: Almost Ready Asteroid Clicker)

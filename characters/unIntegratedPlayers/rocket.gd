@@ -9,6 +9,7 @@ func _ready() -> void:
 	var id = get_instance_id() #gets unique id of Object Instance
 	rocketInstance = instance_from_id(id) #returns Object reference
 	
+
 # removes rocket from the scene
 func removeRocket() -> void:
 	rocketInstance.queue_free()
