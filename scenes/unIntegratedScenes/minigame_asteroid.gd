@@ -8,10 +8,13 @@ extends Node2D
 
 @onready var Rocket = $Rocket
 
+signal startDialogue
+signal fadeOut
+
 var currentHealth = health
 
 func _ready() -> void:
-	new_game()
+	emit_signal("startDialogue")
 
 func _process(delta: float) -> void:
 	if !is_instance_valid(Rocket):
@@ -48,4 +51,11 @@ func _on_spawn_rate_timeout() -> void:
 
 
 func _on_win_timer_timeout() -> void:
+	emit_signal("fadeOut")
+
+
+func _on_control_start_minigame() -> void:
+	new_game()
+
+func unload_Minigame():
 	get_tree().unload_current_scene()
