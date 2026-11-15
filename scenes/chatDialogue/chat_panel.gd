@@ -2,6 +2,8 @@ extends Control
 
 signal dialogue_finished
 
+const ECHO_SPLASH_ART := preload("res://assets/splashart/Echo.png")
+
 @export var close_on_advance := true
 @export var transition_duration := 0.25
 
@@ -27,6 +29,8 @@ func show_dialogue(
 
 	if portrait != null:
 		splash_art.texture = portrait
+	elif speaker_name.strip_edges().to_lower() == "echo":
+		splash_art.texture = ECHO_SPLASH_ART
 
 	_transition_id += 1
 	_is_showing = true

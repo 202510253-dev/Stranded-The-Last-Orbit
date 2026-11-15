@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dekqy6ugph1vy"]
+[gd_scene format=4 uid="uid://cqmv7x8ps10ou"]
 
 [ext_resource type="TileSet" uid="uid://djoqsnwol6ndn" path="res://scenes/launch/rocket.tres" id="1_4t60n"]
 [ext_resource type="PackedScene" uid="uid://dnqd41ml7fddb" path="res://characters/player/player.tscn" id="2_4t60n"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brvrc4qaj073w" path="res://scenes/launch/rocket flying.png" id="4_d00vk"]
 [ext_resource type="Script" uid="uid://74hnysbml0cg" path="res://scenes/launch/launch_scene.gd" id="5_launch"]
 [ext_resource type="PackedScene" uid="uid://byp4ougymul8v" path="res://scenes/chatDialogue/chatPanel.tscn" id="6_chat"]
-[ext_resource type="PackedScene" path="res://scenes/trivia/trivia_video.tscn" id="7_trivia"]
+[ext_resource type="PackedScene" uid="uid://sm2de1jlvw46" path="res://scenes/trivia/trivia_video.tscn" id="7_trivia"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88dfc"]
 atlas = ExtResource("4_d00vk")
