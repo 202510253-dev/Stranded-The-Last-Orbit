@@ -29,13 +29,8 @@ window/stretch/scale_mode="integer"
 
 folder_colors={
 "res://assets/unIntegratedAssets/": "yellow",
-<<<<<<< HEAD
 "res://characters/unIntegratedPlayers/": "yellow",
 "res://scenes/unIntegratedScenes/": "yellow"
-=======
-"res://characters/unIntegratedPlayers/": "yellow",
-"res://scenes/unIntegratedScenes/": "yellow"
->>>>>>> main
 }
 
 [input]
