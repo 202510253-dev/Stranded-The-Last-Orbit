@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbgle1tpenvj4"]
+
+[ext_resource type="AudioStream" uid="uid://dceavi8momiv4" path="res://assets/music/Lune.mp3" id="1_4jvi4"]
+[ext_resource type="Script" path="res://assets/music/bgm.gd" id="2_script"]
+
+[node name="Bgm" type="AudioStreamPlayer" unique_id=1458140663]
+script = ExtResource("2_script")
+stream = ExtResource("1_4jvi4")
+volume_db = -15.0

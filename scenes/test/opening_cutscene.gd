@@ -9,6 +9,7 @@ extends Node2D
 var _finished := false
 
 func _ready() -> void:
+	Bgm.fade_in()
 	player.set_movement_enabled(false)
 
 	await move_guide_to_player()
