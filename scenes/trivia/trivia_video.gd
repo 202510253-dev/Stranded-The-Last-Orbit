@@ -5,6 +5,7 @@ signal finished
 const SPACESHIP_SCENE := preload("res://scenes/test/SpaceShip.tscn")
 
 @export var fade_duration := 1.0
+@export var music_fade_duration := 2.0
 
 @onready var chat_panel: Control = $CanvasLayer/ChatPanel
 @onready var video_player: VideoStreamPlayer = $VideoPlayer
@@ -36,6 +37,7 @@ func _show_trivia() -> void:
 		_finish()
 		return
 
+	await Bgm.fade_out(music_fade_duration)
 	video_player.show()
 	video_player.play()
 	var video_fade := create_tween().set_parallel(true)
